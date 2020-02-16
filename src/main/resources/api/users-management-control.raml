@@ -1,0 +1,77 @@
+#%RAML 1.0
+title: Users Management Control
+version: 1.0
+baseUri: http://localhost:8081
+
+types:
+  user: !include datatypes/user.raml
+  userNoID: !include datatypes/userNoID.raml
+
+/users:
+  get:
+    description: Retrieves users based on the given query parameters
+    responses:
+      200:
+        description: Returns an array of user objects in JSON
+        body:
+          application/json:
+            type: user[]
+            example:  !include examples/usersExample.raml
+      400:
+        body:
+          application/json:
+            example: {
+              "message": "Error retrieving users."
+            }  
+  post:
+    description: Creates new users based on a given array of User objects.
+    body:
+      application/json:
+        type: userNoID[]
+        example: !include examples/usersExampleNoID.raml
+    responses:
+      400:
+        body:
+          application/json:
+             example: {
+               "message": "Error creating users. Please check the JSON object and make sure it's valid."
+             }
+      201:
+        body:
+          application/json:
+            example: {
+              "message": "Users created (but not really)."
+            }  
+                     
+  /{ID}:
+    get:
+      description: Retrieve a specific user by ID
+      responses:
+        200:
+          body:
+            application/json:
+              type: user[]
+              example: !include examples/userExample.raml
+    put:
+      description: Updates a specific user with all the user objects filled
+      body:
+        application/json:
+          type: user[]
+          example: !include examples/userUpdateExample.raml
+      responses:
+       201:  
+         body:
+           application/json: 
+             example: {
+               "message": "user updated/created but not really"
+             }            
+    delete:
+      description: Deletes a specific user by ID 
+      responses:
+         200:
+          body:
+           application/json:
+             example: {
+              "message": "User deleted succesfully! (but not really)."}        
+
+      
