@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="MU-T-Users.xml" />
+	<munit:test name="MU-T-Users-put:\users\(ID):application\json:users-management-control-configTest" doc:id="3844203a-ee57-49a6-9296-55e159a14cb1" description="Test">
+		<munit:behavior >
+			<set-payload doc:name="Set Payload" doc:id="b43fb65d-d524-4716-ad7b-13b7c1007bda" mimeType="application/json" value='#[{
+"id": "1",
+"fname": "Vladmir",
+"lname": "Putin",
+"department": "Politics"
+}]'/>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to put:\users\(ID):application\json:users-management-control-config" doc:id="de5ff83e-d46a-4941-ac8b-448c1632d585" name="put:\users\(ID):application\json:users-management-control-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="ad1ca079-b0bf-43a3-bc1f-275ee5e2aa28" is="#[MunitTools::notNullValue()]" expression="#[payload.put]]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="MU-T-Users-delete:\users\(ID):users-management-control-configTest" doc:id="2ddbf55b-e7c2-46f6-bd5b-3b1c84dc9aa8" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to delete:\users\(ID):users-management-control-config" doc:id="e249c7f9-016a-41d8-b251-2485157b19f5" name="delete:\users\(ID):users-management-control-config"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="MU-T-Users-get:\users:users-management-control-configTest" doc:id="6b20243b-dd63-442d-92ae-ad3a537738aa" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\users:users-management-control-config" doc:id="b9b8ce1d-22a1-4a6a-9ac3-f6d411c5429c" name="get:\users:users-management-control-config"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="MU-T-Users-get:\users\(ID):users-management-control-configTest" doc:id="ebf3b3d5-9c00-4f54-97ff-671b9b3eb635" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\users\(ID):users-management-control-config" doc:id="80d4c899-5950-4569-8d07-4da0b7fe7d2b" name="get:\users\(ID):users-management-control-config"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="MU-T-Users-post:\users:application\json:users-management-control-configTest" doc:id="cbd64a25-2132-4934-a742-2a1ceded1bc5" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\users:application\json:users-management-control-config" doc:id="fe58b42f-3fef-4bc6-ab51-8df7b20ffcf5" name="post:\users:application\json:users-management-control-config"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>
