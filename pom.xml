@@ -26,6 +26,15 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
+				<cloudhubDeployment>
+				<username>messi_man</username>
+				<environment>Sandbox</environment>
+				<workers>1</workers>
+				<worker.type>Miro</worker.type>
+				<application.name>capstone-rest</application.name>
+				<password>Mestilamessi@37</password>
+				<mule.version>4.2.2</mule.version>
+				</cloudhubDeployment>
 				</configuration>
 			</plugin>
 		<plugin>
